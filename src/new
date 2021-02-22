@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+template_path=$NEW_TEMPLATES
+
+# TODO:
+# - check env exists or repo_path not empty
+# - check we got input
+# - verify template path exists
+# - write the thing in golang
+
+help() {
+  cat << EOF
+usage: $0 [OPTIONS] <template-name>
+    --help              Show this message
+    --list-templates    List templates
+EOF
+}
+
+list_templates() {
+  ls "$template_path"
+}
+
+for opt in "$@"; do
+  case $opt in 
+    --help)
+      help
+      exit 0
+      ;;
+    --list-templates)
+      list_templates
+      exit 0
+      ;;
+  esac
+done
+
+if [ $# -eq 1 ]
+then
+  
+  cat $template_path/$1
+else
+  ls "$PWD/templates/$1"
+fi
+

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+if [ -z "$(which <BIN-NAME>)" ]; then
+  echo "Need to be installed"
+  exit 1;
+fi
